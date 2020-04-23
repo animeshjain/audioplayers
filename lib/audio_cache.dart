@@ -7,6 +7,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:path_provider/path_provider.dart';
 
 import 'audioplayers.dart';
+import 'audioplayers.dart';
 
 /// This class represents a cache for Local Assets to be played.
 ///
@@ -99,9 +100,10 @@ class AudioCache {
       {double volume = 1.0,
       bool isNotification,
       PlayerMode mode = PlayerMode.MEDIA_PLAYER,
-      bool stayAwake}) async {
+      bool stayAwake,
+      AudioPlayer audioPlayer}) async {
     String url = await getAbsoluteUrl(fileName);
-    AudioPlayer player = _player(mode);
+    AudioPlayer player = audioPlayer ?? _player(mode);
     await player.play(
       url,
       volume: volume,
