@@ -556,6 +556,11 @@ class AudioPlayer {
       return;
     }
 
+    if (player == null) {
+      _log("ignoring call ${call.method} $callArgs : player has already been released and we don't have a reference to it anymore");
+      return;
+    }
+
     final value = callArgs['value'];
 
     switch (call.method) {
