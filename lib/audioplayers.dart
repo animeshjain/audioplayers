@@ -624,6 +624,7 @@ class AudioPlayer {
     if (!_errorController.isClosed) futures.add(_errorController.close());
 
     await Future.wait(futures);
+    players.remove(this.playerId);
   }
 
   Future<int> earpieceOrSpeakersToggle() async {
